@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "169166133739",
+    "firebase_url": "https://dropit-4c6ec.firebaseio.com",
+    "project_id": "dropit-4c6ec",
+    "storage_bucket": "dropit-4c6ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169166133739:android:40e4f1cab9c9f46c",
+        "android_client_info": {
+          "package_name": "vorkapic.com.dropit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "169166133739-53t4at3j5auhsrhbsr0g23k6sjjdeta4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsgdkxpCYVJk8CFql0qN3d-nyWrFx8vvQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
