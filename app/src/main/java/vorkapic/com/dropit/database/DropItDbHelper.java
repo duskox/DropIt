@@ -1,8 +1,11 @@
 package vorkapic.com.dropit.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import vorkapic.com.dropit.dataModels.Drop;
 
 /**
  * Created by dvor on 19/07/16.
@@ -61,9 +64,25 @@ public class DropItDbHelper extends SQLiteOpenHelper {
         db.execSQL(SqlUtil.createTable(DropItContract.DropItEntry.TABLE_CONTENT, DropItContract.DropItEntry.CONTENT_TABLE_COLUMNS, null));
     }
 
-    public int insertDrop() {
+    public long insertDrop(Drop drop) {
+        long contentRowIndex = -1;
+        long dropRowIndex = -1;
+
         SQLiteDatabase db = getWritableDatabase();
 
-        db.insert(DropItContract.DropItEntry.TABLE_CONTENT, )
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DropItContract.DropItEntry.COLUMN_NAME_CONTENT_TEXT, drop.getMessage());
+        contentValues.put(DropItContract.DropItEntry.COLUMN_NAME_CONTENT_ATTACHMENT, drop.getAttachment());
+        contentRowIndex = db.insert(DropItContract.DropItEntry.TABLE_CONTENT, null, contentValues);
+
+        ContentValues dropValues = new ContentValues();
+        dropValues.put(DropItContract.DropItEntry.COLUMN_NAME_DROP_TITLE, drop.getTitle());
+        dropValues.put(DropItContract.DropItEntry.COLUMN_NAME_DROP_BIRTH, drop.getBirth().toString());
+        dropValues.put(DropItContract.DropItEntry.COLUMN_NAME_DROP_LATITUDE, drop.getLatitude());
+        dropValues.put(DropItContract.DropItEntry.COLUMN_NAME_DROP_LONGITUDE, drop.getLongitude());
+        dropValues.put(DropItContract.DropItEntry.COLUMN_NAME_DROP_CONTENT, contentRowIndex);
+        dropRowIndex = db.insert(DropItContract.DropItEntry.TABLE_DROPS, null, dropValues);
+
+        return dropRowIndex;
     }
 }
